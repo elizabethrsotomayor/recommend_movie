@@ -1,5 +1,4 @@
 import os
-import dotenv
 import google.generativeai as genai
 import re
 import requests
@@ -8,9 +7,7 @@ import time
 import urllib.parse
 import streamlit as st
 
-dotenv.load_dotenv()
-
-genai.configure(api_key=os.getenv('GENAI_API_KEY'))
+genai.configure(api_key=st.secrets['GENAI_API_KEY'])
 
 class Recommend_movies:
     def __init__(self) -> None:
