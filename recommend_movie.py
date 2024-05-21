@@ -60,9 +60,10 @@ class Recommend_movies:
 
         for i in recommendations:
             movie = self.urlify_string(i)
-            url = f"https://api.themoviedb.org/3/search/movie?query={movie}&include_adult=false&language=en-US&page=1"
+            url = f"https://api.themoviedb.org/3/search/movie?query={movie}&api_key={st.secrets['TMDB_API_KEY']}&include_adult=false&language=en-US&page=1"
             res = self.session.get(url).json()
             print(res)
+            #TODO: fix this
             result.append(res["results"])
 
         return result
@@ -76,6 +77,7 @@ recom_movies = Recommend_movies()
 if text_box:
     print(text_box)
 
+    # TODO: figure out why this is not working
     result = recom_movies.generate(str(text_box))
 
     for i in range(len(result)):
