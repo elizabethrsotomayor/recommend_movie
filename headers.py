@@ -1,9 +1,6 @@
-import os
-import dotenv
-
-dotenv.load_dotenv()
+import streamlit as st
 
 SESSION_HEADERS = {
     "accept": "application/json",
-    "Authorization": f"Bearer {os.getenv('TMDB_API_KEY')}"
+    "Authorization": f"Bearer {st.secrets['GENAI_API_KEY']}"
 }
